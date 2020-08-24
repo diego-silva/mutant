@@ -10,26 +10,22 @@ module Mutant
     # Descending into 'begin' nodes is supported because these are generated for
     # the one-line syntax class << self; def foo; end
     class FindMetaclassContaining
-      include NodePredicates
+      include NodePredicates, Concord.new(:ast)
+
       # index of sclass's body
       SCLASS_BODY_INDEX = 1
       # the list of node types whose children will be checked
       TRANSPARENT_NODE_TYPES = %I[begin].freeze
 
-      # ast should be the entire AST for the file under consideration
-      def initialize(ast)
-        @ast = ast
-      end
-
       def call(node)
-        AST.find_last_path(@ast) do |cur_node|
+        AST.find_last_path(ast) do |cur_node|
           next unless n_sclass?(cur_node)
 
           metaclass_of?(cur_node, node)
         end.last
       end
 
-      private
+    private
 
       def metaclass_of?(sclass, node)
         body = sclass.children.fetch(SCLASS_BODY_INDEX)
