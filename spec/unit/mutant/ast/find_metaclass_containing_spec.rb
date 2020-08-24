@@ -2,7 +2,7 @@
 
 RSpec.describe Mutant::AST::FindMetaclassContaining do
   describe '#call' do
-    subject { described_class.new(ast).call(node) }
+    subject { described_class.call(ast, node) }
 
     let(:metaclass_node) { s(:sclass, s(:self), method_node) }
     let(:method_node) { s(:def, 'test', s(:nil)) }

@@ -50,7 +50,7 @@ module Mutant
           end
 
           def metaclass_containing(node)
-            AST::FindMetaclassContaining.new(ast).call(node)
+            AST::FindMetaclassContaining.call(ast, node)
           end
 
           # Test for line match
