@@ -19,6 +19,8 @@ module Mutant
           self
         end
 
+      private
+
         def wrap_node(mutant)
           s(:sclass, AST::Nodes::N_SELF, mutant)
         end
