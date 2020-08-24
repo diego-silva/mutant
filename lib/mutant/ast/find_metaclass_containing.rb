@@ -21,10 +21,10 @@ module Mutant
       private_constant(*constants(false))
 
       def call
-        AST.find_last_path(root) do |cur_node|
-          next unless n_sclass?(cur_node)
+        AST.find_last_path(root) do |current|
+          next unless n_sclass?(current)
 
-          metaclass_of?(cur_node)
+          metaclass_of?(current)
         end.last
       end
 
