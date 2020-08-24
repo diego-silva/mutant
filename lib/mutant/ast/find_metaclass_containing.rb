@@ -18,6 +18,8 @@ module Mutant
       # the list of node types whose children will be checked
       TRANSPARENT_NODE_TYPES = %i[begin].freeze
 
+      private_constant(*constants(false))
+
       def call(node)
         AST.find_last_path(ast) do |cur_node|
           next unless n_sclass?(cur_node)
