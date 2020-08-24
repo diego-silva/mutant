@@ -14,8 +14,9 @@ module Mutant
 
       # index of sclass's body
       SCLASS_BODY_INDEX = 1
+
       # the list of node types whose children will be checked
-      TRANSPARENT_NODE_TYPES = %I[begin].freeze
+      TRANSPARENT_NODE_TYPES = %i[begin].freeze
 
       def call(node)
         AST.find_last_path(ast) do |cur_node|
