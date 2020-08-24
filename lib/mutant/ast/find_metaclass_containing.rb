@@ -20,24 +20,24 @@ module Mutant
 
       private_constant(*constants(false))
 
-      def call(node)
+      def call(target)
         AST.find_last_path(root) do |cur_node|
           next unless n_sclass?(cur_node)
 
-          metaclass_of?(cur_node, node)
+          metaclass_of?(cur_node, target)
         end.last
       end
 
     private
 
-      def metaclass_of?(sclass, node)
+      def metaclass_of?(sclass, target)
         body = sclass.children.fetch(SCLASS_BODY_INDEX)
-        body.equal?(node) || transparently_contains?(body, node)
+        body.equal?(target) || transparently_contains?(body, target)
       end
 
-      def transparently_contains?(body, node)
+      def transparently_contains?(body, target)
         TRANSPARENT_NODE_TYPES.include?(body.type) &&
-          include_exact?(body.children, node)
+          include_exact?(body.children, target)
       end
 
       def include_exact?(haystack, needle)
