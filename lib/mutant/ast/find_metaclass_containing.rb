@@ -12,7 +12,6 @@ module Mutant
     class FindMetaclassContaining
       include NodePredicates, Concord.new(:root, :target), Procto.call
 
-      # index of sclass's body
       SCLASS_BODY_INDEX = 1
 
       private_constant(*constants(false))
