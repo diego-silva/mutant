@@ -19,7 +19,7 @@ module Mutant
           super(scope, method_name, Evaluator)
         end
 
-        # Singleton method evaluator
+        # Metaclass method evaluator
         class Evaluator < Evaluator
           # Terminology note: the "receiver" is the `self` in `class << self`
           SUBJECT_CLASS         = Subject::Method::Metaclass
