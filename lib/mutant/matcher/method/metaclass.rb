@@ -45,8 +45,8 @@ module Mutant
           end
 
           def metaclass_receiver?(node)
-            mc = metaclass_containing(node)
-            mc && metaclass_target?(mc)
+            candidate = metaclass_containing(node)
+            candidate && metaclass_target?(candidate)
           end
 
           def metaclass_containing(node)
