@@ -32,7 +32,7 @@ module Mutant
       end
 
       def transparently_contains?(body)
-        body.type.equal?(:begin) && include_exact?(body.children, target)
+        n_begin?(body) && include_exact?(body.children, target)
       end
 
       def include_exact?(haystack, needle)
