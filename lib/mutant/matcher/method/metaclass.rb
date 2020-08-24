@@ -32,11 +32,6 @@ module Mutant
 
         private
 
-          # Test for node match
-          #
-          # @param [Parser::AST::Node] node
-          #
-          # @return [Boolean]
           def match?(node)
             n_def?(node) &&
               name?(node) &&
@@ -53,10 +48,6 @@ module Mutant
             AST::FindMetaclassContaining.call(ast, node)
           end
 
-          # Test for line match
-          # @param [Parser::AST::Node] node
-          #
-          # @return [Boolean]
           def line?(node)
             node
               .location
@@ -64,20 +55,10 @@ module Mutant
               .equal?(source_line)
           end
 
-          # Test for name match
-          #
-          # @param [Parser::AST::Node] node
-          #
-          # @return [Boolean]
           def name?(node)
             node.children.fetch(NAME_INDEX).equal?(method_name)
           end
 
-          # Test for receiver match
-          #
-          # @param [Parser::AST::Node] node
-          #
-          # @return [Boolean]
           def metaclass_target?(node)
             receiver = node.children.fetch(SCLASS_RECEIVER_INDEX)
             case receiver.type
@@ -91,11 +72,6 @@ module Mutant
             end
           end
 
-          # Test if sclass's const name matches context
-          #
-          # @param [Parser::AST::Node] node
-          #
-          # @return [Boolean]
           def sclass_const_name?(node)
             name = node.children.fetch(CONST_NAME_INDEX)
             name.to_s.eql?(context.unqualified_name)
