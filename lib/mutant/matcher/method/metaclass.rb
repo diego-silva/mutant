@@ -22,13 +22,13 @@ module Mutant
         # Singleton method evaluator
         class Evaluator < Evaluator
           # Terminology note: the "receiver" is the `self` in `class << self`
-          SUBJECT_CLASS            = Subject::Method::Metaclass
-          NAME_INDEX               = 0
-          CONST_NAME_INDEX         = 1
-          SCLASS_RECEIVER_INDEX    = 0
-          RECEIVER_WARNING         = 'Can only match :def inside :sclass on ' \
-                                     ':self or :const, got :sclass on %p ' \
-                                     'unable to match'
+          SUBJECT_CLASS         = Subject::Method::Metaclass
+          NAME_INDEX            = 0
+          CONST_NAME_INDEX      = 1
+          SCLASS_RECEIVER_INDEX = 0
+          RECEIVER_WARNING      = 'Can only match :def inside :sclass on ' \
+                                  ':self or :const, got :sclass on %p ' \
+                                  'unable to match'
 
         private
 
