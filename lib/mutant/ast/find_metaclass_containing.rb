@@ -36,7 +36,7 @@ module Mutant
       end
 
       def include_exact?(haystack, needle)
-        !haystack.index { |elem| elem.equal?(needle) }.nil?
+        haystack.any? { |elem| elem.equal?(needle) }
       end
     end
   end
