@@ -16,6 +16,11 @@ module Mutant
 
       private_constant(*constants(false))
 
+      # Find metaclass node containing target node
+      #
+      # @return [Parser::AST::Node, nil]
+      #
+      # @api private
       def call
         AST.find_last_path(root) do |current|
           next unless n_sclass?(current)
