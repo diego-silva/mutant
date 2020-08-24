@@ -15,9 +15,6 @@ module Mutant
       # index of sclass's body
       SCLASS_BODY_INDEX = 1
 
-      # the list of node types whose children will be checked
-      TRANSPARENT_NODE_TYPES = %i[begin].freeze
-
       private_constant(*constants(false))
 
       def call
@@ -36,8 +33,7 @@ module Mutant
       end
 
       def transparently_contains?(body)
-        TRANSPARENT_NODE_TYPES.include?(body.type) &&
-          include_exact?(body.children, target)
+        body.type.equal?(:begin) && include_exact?(body.children, target)
       end
 
       def include_exact?(haystack, needle)
